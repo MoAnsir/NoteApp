@@ -3,19 +3,24 @@ import { useState } from "react";
 
 import "../css/comps/listNotes.scss";
 
-function ListNotes({ setExpenses, expenses }) {
+function ListNotes({ noteState, setNoteState }) {
     return (
         <Row>
             <Col>
                 <h2>List Notes</h2>
                 <ul className="ps-0">
-                    <li>
-                        <p>description</p>
-                        <p>Note content</p>
-                        <p>Tags</p>
-                        <p>Edit</p>
-                        <p>Delete</p>
-                    </li>
+                    {!noteState.length
+                        ? "No data"
+                        : noteState.map((note, index) => (
+                              <li key={note.id}>
+                                  <p>{note.desc}</p>
+                                  <p>{note.content}</p>
+                                  <input type="button" value="edit" />
+                                  <input type="button" value="delete" />
+                                  {/* <span role="button">Edit</span>
+                                  <span role="button">Delete</span> */}
+                              </li>
+                          ))}
                 </ul>
             </Col>
         </Row>
