@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container } from "react-bootstrap";
+import ListNotes from "./comps/ListNotes";
+import AddNote from "./comps/AddNote";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
+import "./css/main/App.scss";
+
+import reportWebVitals from "./reportWebVitals";
+reportWebVitals(console.log);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Container>
+                <h1>Note App</h1>
+                <AddNote />
+                <ListNotes />
+            </Container>
+        </div>
+    );
 }
 
 export default App;
