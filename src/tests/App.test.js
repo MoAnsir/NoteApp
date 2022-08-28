@@ -46,7 +46,7 @@ describe("rendering of initial setup", () => {
     });
 });
 
-describe("add a note", () => {
+describe("Add a note", () => {
     it("should render the add note component", () => {
         render(<App />);
         expect(screen.getByLabelText("Description")).toBeTruthy();
@@ -84,11 +84,53 @@ describe("add a note", () => {
     });
 });
 
-describe("delete note", () => {
+describe("Delete note", () => {
     it("should render the delete buttons", () => {
         render(<App testdata={testNotes} />);
         expect(screen.getAllByRole("button", { name: /Delete/i })).toHaveLength(
             2
         );
+    });
+    it("should delete a note", () => {
+        render(<App testdata={testNotes} />);
+        expect(screen.getByText(/text content 1/i)).toBeInTheDocument();
+        const but = screen.getAllByRole("button", { name: /Delete/i });
+
+        fireEvent.click(but[0]);
+
+        expect(screen.queryByText(/text content 1/i)).not.toBeInTheDocument();
+    });
+});
+
+describe("Edit note", () => {
+    it("should render the edit buttons", () => {
+        render(<App testdata={testNotes} />);
+        expect(screen.getAllByRole("button", { name: /Edit/i })).toHaveLength(
+            2
+        );
+    });
+    it("should edit a note", () => {
+        render(<App testdata={testNotes} />);
+        expect(screen.getByText(/text content 1/i)).toBeInTheDocument();
+        const editBut = screen.getAllByRole("button", { name: /Edit/i });
+
+        fireEvent.click(editBut[0]);
+        // find the modal and the input boxes and save button
+        const desc = screen.getAllByPlaceholderText("Edit note description");
+        const note = screen.getAllByPlaceholderText("Edit note content");
+        const tag = screen.getAllByPlaceholderText("Edit note tags");
+        const saveBut = screen.getAllByRole("button", {
+            name: /Save Changes/i,
+        });
+        // fill in new details
+        fireEvent.change(desc[0], { target: { value: "edit desc 1" } });
+        fireEvent.change(note[0], { target: { value: "edit note 1" } });
+        fireEvent.change(tag[0], { target: { value: "edit, Etag1" } });
+        // click save button
+        fireEvent.click(saveBut[0]);
+        // check the edited stuff is there.
+        expect(screen.queryByText(/text content 1/i)).not.toBeInTheDocument();
+        expect(screen.getAllByText(/edit desc 1/i)[0]).toBeInTheDocument();
+        expect(screen.getAllByText(/edit note 1/i)[0]).toBeInTheDocument();
     });
 });
