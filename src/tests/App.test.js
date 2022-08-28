@@ -1,10 +1,4 @@
-import {
-    render,
-    screen,
-    cleanup,
-    fireEvent,
-    shallow,
-} from "@testing-library/react";
+import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 
 import App from "../App";
 
