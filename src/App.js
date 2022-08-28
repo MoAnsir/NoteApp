@@ -12,13 +12,13 @@ reportWebVitals(console.log);
 // function App() {
 //     let testdata = [
 //         {
-//             id: 1,
-//             desc: "test1 ",
+//             id: uuidv4(),
+//             desc: "test 1 ",
 //             content: "text content 1",
 //             tags: "work, p1",
 //         },
 //         {
-//             id: 2,
+//             id: uuidv4(),
 //             desc: "test 2",
 //             content: "text content 2",
 //             tags: "work, p1",
@@ -31,7 +31,7 @@ function App({ testdata }) {
         <div className="App">
             <Container>
                 <h1>Note App</h1>
-                <AddNote />
+                <AddNote setNoteState={setState} />
                 {!state ? (
                     "No Notes"
                 ) : (
