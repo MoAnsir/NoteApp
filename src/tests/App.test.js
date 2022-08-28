@@ -83,3 +83,12 @@ describe("add a note", () => {
         //expect(screen.getByText(/test desc 1/i)).toBeInTheDocument();
     });
 });
+
+describe("delete note", () => {
+    it("should render the delete buttons", () => {
+        render(<App testdata={testNotes} />);
+        expect(screen.getAllByRole("button", { name: /Delete/i })).toHaveLength(
+            2
+        );
+    });
+});

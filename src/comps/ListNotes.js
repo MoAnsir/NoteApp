@@ -4,6 +4,16 @@ import { useState } from "react";
 import "../css/comps/listNotes.scss";
 
 function ListNotes({ noteState, setNoteState }) {
+    const handleEdit = (id) => {};
+
+    const handleDelete = (id) => {
+        const itemToDelete = noteState.filter((value) => {
+            return value.id !== id;
+        });
+
+        setNoteState(itemToDelete);
+    };
+
     return (
         <Row>
             <Col>
@@ -15,8 +25,16 @@ function ListNotes({ noteState, setNoteState }) {
                               <li key={note.id}>
                                   <p>{note.desc}</p>
                                   <p>{note.content}</p>
-                                  <input type="button" value="edit" />
-                                  <input type="button" value="delete" />
+                                  <input
+                                      type="button"
+                                      value="edit"
+                                      onClick={() => handleEdit()}
+                                  />
+                                  <input
+                                      type="button"
+                                      value="delete"
+                                      onClick={() => handleDelete(note.id)}
+                                  />
                                   {/* <span role="button">Edit</span>
                                   <span role="button">Delete</span> */}
                               </li>
