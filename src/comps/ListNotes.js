@@ -27,7 +27,7 @@ function ListNotes({ noteState, setNoteState }) {
 
     return (
         <Row>
-            <Col>
+            <Col data-testid="EditNote">
                 <h2>List Notes</h2>
                 <ul className="ps-0">
                     {noteState.length

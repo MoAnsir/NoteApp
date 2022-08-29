@@ -2,7 +2,7 @@ import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-function AddNote({ setNoteState }) {
+function AddNote({ noteState, setNoteState }) {
     const [desc, setDesc] = useState("");
     const [note, setNote] = useState("");
     const [tag, setTag] = useState("");
@@ -11,15 +11,26 @@ function AddNote({ setNoteState }) {
         e.preventDefault();
 
         if ((desc, note, tag)) {
-            setNoteState((prev) => [
-                ...prev,
-                {
-                    id: uuidv4(),
-                    desc,
-                    content: note,
-                    tags: tag,
-                },
-            ]);
+            if (noteState) {
+                setNoteState([
+                    {
+                        id: uuidv4(),
+                        desc,
+                        content: note,
+                        tags: tag,
+                    },
+                ]);
+            } else {
+                setNoteState((prev) => [
+                    ...prev,
+                    {
+                        id: uuidv4(),
+                        desc,
+                        content: note,
+                        tags: tag,
+                    },
+                ]);
+            }
         }
         setDesc("");
         setNote("");

@@ -22,6 +22,10 @@ import "./css/main/App.scss";
 //             tags: "work, p1",
 //         },
 //     ];
+
+// Need to fix add issue with the prev. when yo first load there are no notes so you need to add to an empty state.
+// no prev in the setState because there is no prev, it is the first occurrence.
+
 function App({ testdata }) {
     const [state, setState] = useState(testdata ? testdata : null);
 
@@ -29,7 +33,7 @@ function App({ testdata }) {
         <div className="App">
             <Container>
                 <h1>Note App</h1>
-                <AddNote setNoteState={setState} />
+                <AddNote note={state} setNoteState={setState} />
                 {!state ? (
                     "No Notes"
                 ) : (
