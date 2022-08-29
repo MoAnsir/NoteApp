@@ -109,20 +109,20 @@ describe("Edit note", () => {
         const editBut = screen.getAllByRole("button", { name: /Edit/i });
 
         fireEvent.click(editBut[0]);
-        // find the modal and the input boxes and save button
+
         const desc = screen.getAllByPlaceholderText("Edit note description");
         const note = screen.getAllByPlaceholderText("Edit note content");
         const tag = screen.getAllByPlaceholderText("Edit note tags");
         const saveBut = screen.getAllByRole("button", {
             name: /Save Changes/i,
         });
-        // fill in new details
+
         fireEvent.change(desc[0], { target: { value: "edit desc 1" } });
         fireEvent.change(note[0], { target: { value: "edit note 1" } });
         fireEvent.change(tag[0], { target: { value: "edit, Etag1" } });
-        // click save button
+
         fireEvent.click(saveBut[0]);
-        // check the edited stuff is there.
+
         expect(screen.queryByText(/text content 1/i)).not.toBeInTheDocument();
         expect(screen.getAllByText(/edit desc 1/i)[0]).toBeInTheDocument();
         expect(screen.getAllByText(/edit note 1/i)[0]).toBeInTheDocument();
