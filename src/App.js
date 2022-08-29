@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap";
 import ListNotes from "./comps/ListNotes";
 import AddNote from "./comps/AddNote";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./css/main/App.scss";
 // import reportWebVitals from "./reportWebVitals";
@@ -23,21 +23,18 @@ import "./css/main/App.scss";
 //         },
 //     ];
 
-// Need to fix add issue with the prev. when yo first load there are no notes so you need to add to an empty state.
-// no prev in the setState because there is no prev, it is the first occurrence.
-
 function App({ testdata }) {
-    const [state, setState] = useState(testdata ? testdata : null);
+    const [nState, setNState] = useState(testdata ? testdata : null);
 
     return (
         <div className="App">
             <Container>
                 <h1>Note App</h1>
-                <AddNote note={state} setNoteState={setState} />
-                {!state ? (
+                <AddNote noteState={nState} setNoteState={setNState} />
+                {!nState ? (
                     "No Notes"
                 ) : (
-                    <ListNotes noteState={state} setNoteState={setState} />
+                    <ListNotes noteState={nState} setNoteState={setNState} />
                 )}
             </Container>
         </div>

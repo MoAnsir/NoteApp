@@ -10,28 +10,27 @@ function AddNote({ noteState, setNoteState }) {
     const handleAddNote = (e) => {
         e.preventDefault();
 
-        if ((desc, note, tag)) {
-            if (noteState) {
-                setNoteState([
-                    {
-                        id: uuidv4(),
-                        desc,
-                        content: note,
-                        tags: tag,
-                    },
-                ]);
-            } else {
-                setNoteState((prev) => [
-                    ...prev,
-                    {
-                        id: uuidv4(),
-                        desc,
-                        content: note,
-                        tags: tag,
-                    },
-                ]);
-            }
+        if (!noteState) {
+            setNoteState([
+                {
+                    id: uuidv4(),
+                    desc: desc,
+                    content: note,
+                    tags: tag,
+                },
+            ]);
+        } else if ((desc, note, tag)) {
+            setNoteState((prev) => [
+                ...prev,
+                {
+                    id: uuidv4(),
+                    desc,
+                    content: note,
+                    tags: tag,
+                },
+            ]);
         }
+
         setDesc("");
         setNote("");
         setTag("");
