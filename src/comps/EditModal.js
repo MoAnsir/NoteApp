@@ -37,35 +37,50 @@ function EditModal({ showModal, hideModal, note, setNote, noteIndex }) {
                 <Modal.Title>Edit Task</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <p>
-                    Note description: <b>{note[0].desc}</b>
-                </p>
-                <p>
-                    Note content: <b>{note[0].content}</b>
-                </p>
-                <p>
-                    Note tags: <b>{note[0].tags}</b>
-                </p>
-                <p className="d-inline">Edit note:</p>
-                <br />
-                <input
-                    type="text"
-                    className="d-inline mx-2"
-                    placeholder="Edit note description"
-                    onChange={(e) => setDesc(e.target.value)}
-                />
-                <input
-                    type="text"
-                    className="d-inline mx-2"
-                    placeholder="Edit note content"
-                    onChange={(e) => setContent(e.target.value)}
-                />
-                <input
-                    type="text"
-                    className="d-inline mx-2"
-                    placeholder="Edit note tags"
-                    onChange={(e) => setTags(e.target.value)}
-                />
+                <h3 className="text-center">Edit note:</h3>
+                <form>
+                    <div>
+                        <label htmlFor="editNoteDesc">
+                            Note Description: <b>{note[0].desc}</b>
+                        </label>
+                        <input
+                            type="text"
+                            id="editNoteDesc"
+                            name="editNoteDesc"
+                            className="mx-2"
+                            placeholder="Edit note description"
+                            onChange={(e) => setDesc(e.target.value)}
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="editNoteContent">
+                            Note Content: <b>{note[0].content}</b>
+                        </label>
+                        <input
+                            type="text"
+                            id="editNoteContent"
+                            name="editNoteContent"
+                            className=" mx-2"
+                            placeholder="Edit note content"
+                            onChange={(e) => setContent(e.target.value)}
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="editNoteTags">
+                            Note Tags: <b>{note[0].tags}</b>
+                        </label>
+                        <input
+                            type="text"
+                            id="editNoteTags"
+                            name="editNoteTags"
+                            className=" mx-2"
+                            placeholder="Edit note tags"
+                            onChange={(e) => setTags(e.target.value)}
+                        />
+                    </div>
+                </form>
             </Modal.Body>
             <Modal.Footer>
                 <Button

@@ -35,7 +35,21 @@ function ListNotes({ noteState, setNoteState }) {
                               <li key={note.id}>
                                   <p>{note.desc}</p>
                                   <p>{note.content}</p>
-                                  <input
+                                  <button
+                                      className="editButton"
+                                      type="button"
+                                      onClick={() => handleEdit(note.id, index)}
+                                  >
+                                      Edit
+                                  </button>
+                                  <button
+                                      className="editButton"
+                                      type="button"
+                                      onClick={() => handleDelete(note.id)}
+                                  >
+                                      Delete
+                                  </button>
+                                  {/* <input
                                       type="button"
                                       value="edit"
                                       onClick={() => handleEdit(note.id, index)}
@@ -44,7 +58,7 @@ function ListNotes({ noteState, setNoteState }) {
                                       type="button"
                                       value="delete"
                                       onClick={() => handleDelete(note.id)}
-                                  />
+                                  /> */}
                                   {modalData ? (
                                       <EditModal
                                           showModal={showModal}
