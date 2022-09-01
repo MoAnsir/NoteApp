@@ -5,21 +5,17 @@ import { useState } from "react";
 import "./css/main/App.scss";
 
 function App({ testdata }) {
-    const [nState, setNState] = useState(testdata ? testdata : null);
+  const [nState, setNState] = useState(testdata ? testdata : null);
 
-    return (
-        <div className="App">
-            <Container>
-                <h1>Note App</h1>
-                <AddNote noteState={nState} setNoteState={setNState} />
-                {!nState ? (
-                    "No Notes"
-                ) : (
-                    <ListNotes noteState={nState} setNoteState={setNState} />
-                )}
-            </Container>
-        </div>
-    );
+  return (
+    <div className="App">
+      <h1 className="my-5">Note App</h1>
+      <Container className="mb-5">
+        <AddNote noteState={nState} setNoteState={setNState} />
+        <ListNotes noteState={nState} setNoteState={setNState} />
+      </Container>
+    </div>
+  );
 }
 
 export default App;

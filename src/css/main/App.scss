@@ -1,3 +1,128 @@
 .App {
   text-align: center;
 }
+
+.container {
+  background-color: rgb(255, 244, 186);
+  border-radius: 25px;
+  border: 2px solid rgb(217, 183, 13);
+  box-shadow: 5px 5px rgb(196, 193, 177);
+  max-width: 1335px;
+}
+
+.note-modal {
+  background: linear-gradient(
+    -45deg,
+    rgb(255, 244, 186) 100%,
+    rgb(214, 192, 86) 82%,
+    rgb(128, 120, 78) 82%,
+    rgb(255, 244, 186) 100%
+  );
+}
+
+.modal-postit {
+  position: relative;
+  border: 1px solid #e8e8e8;
+  border-top: 0 solid #fdfd86;
+  transition: all 0.2s ease-in-out;
+  background: linear-gradient(
+    -45deg,
+    #ffff88 100%,
+    #ffff88 82%,
+    #ffff88 82%,
+    #ffffc6 100%
+  );
+}
+
+.postit {
+  // line-height: 1;
+  // text-align: center;
+  width: 275px;
+  max-width: 285px;
+  margin: 25px;
+  min-height: 250px;
+  max-height: 250px;
+  padding-top: 35px;
+  position: relative;
+  border: 1px solid #e8e8e8;
+  border-top: 60px solid #fdfd86;
+  // font-family: "Reenie Beanie";
+  // font-size: 22px;
+  //border-bottom-right-radius: 60px 5px;
+  //display: inline-block;
+  transition: all 0.2s ease-in-out;
+  background: linear-gradient(
+    -45deg,
+    #ffff88 100%,
+    #ffff88 82%,
+    #ffff88 82%,
+    #ffffc6 100%
+  );
+
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 32ch;
+  }
+
+  .pin {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -25%;
+    left: 47%;
+
+    &--blue {
+      background-image: radial-gradient(
+        rgb(0, 55, 255) 50%,
+        rgba(0, 0, 0, 0) 75%
+      );
+    }
+
+    &--red {
+      background-image: radial-gradient(
+        rgb(255, 0, 0) 50%,
+        rgba(0, 0, 0, 0) 75%
+      );
+    }
+
+    &--green {
+      background-image: radial-gradient(
+        rgb(0, 255, 38) 50%,
+        rgba(0, 0, 0, 0) 75%
+      );
+    }
+
+    &--yellow {
+      background-image: radial-gradient(
+        rgb(255, 255, 0) 50%,
+        rgba(0, 0, 0, 0) 75%
+      );
+    }
+  }
+}
+
+.start-45 {
+  left: 45%;
+}
+
+.postit:hover {
+  transform: scale(1.1);
+}
+
+.crease--top-right {
+  border-top-right-radius: 36px 18px;
+}
+
+.crease--top-left {
+  border-top-right-radius: 40px 20px;
+}
+
+.crease--bottom-left {
+  border-bottom-left-radius: 60px 10px;
+}
+
+.crease--bottom-right {
+  border-bottom-right-radius: 60px 13px;
+}
