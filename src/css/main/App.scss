@@ -35,8 +35,6 @@
 }
 
 .postit {
-  // line-height: 1;
-  // text-align: center;
   width: 275px;
   max-width: 285px;
   margin: 25px;
@@ -46,10 +44,6 @@
   position: relative;
   border: 1px solid #e8e8e8;
   border-top: 60px solid #fdfd86;
-  // font-family: "Reenie Beanie";
-  // font-size: 22px;
-  //border-bottom-right-radius: 60px 5px;
-  //display: inline-block;
   transition: all 0.2s ease-in-out;
   background: linear-gradient(
     -45deg,
@@ -125,4 +119,32 @@
 
 .crease--bottom-right {
   border-bottom-right-radius: 60px 13px;
+}
+
+.add-note-form {
+  width: 35%;
+}
+
+@media (max-width: 1199.98px) {
+  .add-note-form {
+    width: 35%;
+  }
+}
+
+@media (max-width: 1004px) {
+  .add-note-form {
+    width: 45%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .add-note-form {
+    width: 60%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .add-note-form {
+    width: 100%;
+  }
 }

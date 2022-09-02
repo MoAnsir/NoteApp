@@ -1,5 +1,5 @@
-import { Row, Col } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { Row, Col, Button } from "react-bootstrap";
+import { useState } from "react";
 import EditModal from "./EditModal";
 import ContentModal from "./ContentModal";
 
@@ -11,7 +11,7 @@ function ListNotes({ noteState, setNoteState }) {
   const [modalData, setModalData] = useState("");
   const [noteIndex, setNoteIndex] = useState("");
 
-  const modal = (whichModal, id, index) => {
+  const handleModal = (whichModal, id, index) => {
     const itemToEdit = noteState.filter((value) => {
       return value.id === id;
     });
@@ -66,26 +66,26 @@ function ListNotes({ noteState, setNoteState }) {
                     ></div>
                     <div
                       className="note-content"
-                      onClick={() => modal("content", note.id, index)}
+                      onClick={() => handleModal("content", note.id, index)}
                     >
                       <p className="px-2">{note.desc}</p>
                       <p className="px-2">{note.content}</p>
                     </div>
                     <div className="buttons">
-                      <button
-                        className="editButton"
+                      <Button
+                        className="editButton me-3"
                         type="button"
-                        onClick={() => modal("edit", note.id, index)}
+                        onClick={() => handleModal("edit", note.id, index)}
                       >
                         Edit
-                      </button>
-                      <button
+                      </Button>
+                      <Button
                         className="deleteButton"
                         type="button"
                         onClick={() => handleDelete(note.id)}
                       >
                         Delete
-                      </button>
+                      </Button>
                     </div>
                     {showEditModal ? (
                       <EditModal
@@ -103,8 +103,6 @@ function ListNotes({ noteState, setNoteState }) {
                         note={modalData}
                       />
                     ) : null}
-                    {/* <span role="button">Edit</span>
-                                  <span role="button">Delete</span> */}
                   </li>
                 ))
               : null}

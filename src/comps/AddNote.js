@@ -1,4 +1,4 @@
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
@@ -40,8 +40,8 @@ function AddNote({ noteState, setNoteState }) {
     <Row>
       <Col data-testid="AddNote">
         <h2 className="my-4">Add Notes</h2>
-        <form>
-          <div>
+        <form className="mx-auto add-note-form">
+          <div className="d-flex justify-content-between">
             <label htmlFor="noteDesc">Description</label>
             <input
               type="text"
@@ -54,7 +54,7 @@ function AddNote({ noteState, setNoteState }) {
               }}
             />
           </div>
-          <div>
+          <div className="d-flex justify-content-between my-3">
             <label htmlFor="noteContent">Note</label>
             <input
               type="text"
@@ -67,7 +67,7 @@ function AddNote({ noteState, setNoteState }) {
               }}
             />
           </div>
-          <div>
+          <div className="d-flex justify-content-between mb-3">
             <label htmlFor="noteTags">Tags</label>
             <input
               type="text"
