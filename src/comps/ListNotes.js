@@ -92,6 +92,7 @@ function ListNotes({ noteState, setNoteState }) {
                         showEditModal={showEditModal}
                         hideModal={setEditModal}
                         note={modalData}
+                        allNotes={noteState}
                         setNote={setNoteState}
                         noteIndex={noteIndex}
                       />

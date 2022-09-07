@@ -1,11 +1,26 @@
 import { Container } from "react-bootstrap";
 import ListNotes from "./comps/ListNotes";
 import AddNote from "./comps/AddNote";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { get, set } from "idb-keyval";
 import "./css/main/App.scss";
 
 function App({ testdata }) {
   const [nState, setNState] = useState(testdata ? testdata : null);
+
+  useEffect(() => {
+    get("test").then((val) => {
+      if (!testdata) {
+        setNState(val);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    if (nState) {
+      set("test", nState);
+    }
+  }, [nState]);
 
   return (
     <div className="App">

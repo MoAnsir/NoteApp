@@ -1,7 +1,14 @@
 import { Modal, Button } from "react-bootstrap";
 import { useState } from "react";
 
-function EditModal({ showEditModal, hideModal, note, setNote, noteIndex }) {
+function EditModal({
+  showEditModal,
+  hideModal,
+  note,
+  allNotes,
+  setNote,
+  noteIndex,
+}) {
   const [desc, setDesc] = useState(note[0].desc);
   const [content, setContent] = useState(note[0].content);
   const [tags, setTags] = useState(note[0].content);
@@ -9,16 +16,16 @@ function EditModal({ showEditModal, hideModal, note, setNote, noteIndex }) {
   const handleSave = (e) => {
     e.preventDefault();
 
-    const editedNote = note.filter((value) => {
-      return value.id === note[0].id;
+    const noteCopy = [...note];
+
+    const updatedState = allNotes.map((obj) => {
+      if (obj.id === noteCopy[0].id) {
+        return { ...obj, desc, content, tags };
+      }
+      return obj;
     });
 
-    editedNote[0].desc = desc;
-    editedNote[0].content = content;
-    editedNote[0].tags = tags;
-
-    const noteEditState = { ...note };
-    noteEditState[noteIndex] = editedNote;
+    setNote(updatedState);
 
     setDesc("");
     setContent("");

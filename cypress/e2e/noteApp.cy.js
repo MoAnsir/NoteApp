@@ -31,7 +31,7 @@ describe("Note App functionality ", () => {
   });
 
   it("should show a note", () => {
-    cy.get(".note-content").click();
+    cy.get(".note-content")[0].click();
     cy.get(".modal-dialog").should("exist");
     cy.get(".modal-dialog .note-content")
       .contains("cypress test content 1")
