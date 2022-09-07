@@ -1,4 +1,5 @@
 import { render, screen, cleanup, fireEvent } from "@testing-library/react";
+import "fake-indexeddb/auto";
 
 import App from "../App";
 
