@@ -9,11 +9,11 @@ function App({ testdata }) {
   const [nState, setNState] = useState(testdata ? testdata : null);
 
   useEffect(() => {
-    get("test").then((val) => {
-      if (!testdata) {
+    if (!testdata) {
+      get("test").then((val) => {
         setNState(val);
-      }
-    });
+      });
+    }
   }, []);
 
   useEffect(() => {

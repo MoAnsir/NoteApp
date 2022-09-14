@@ -3,6 +3,9 @@
 beforeEach(() => {
   cy.visit("http://localhost:3000/");
 });
+// Need to clear the indexDB of any previous data.
+// need to do clean up after each test. remove all notes
+// in the edit window there are 2 modals, need to pick the correct one.
 
 describe("Note App rendering ", () => {
   it("should display all the child components and no data", () => {
@@ -15,6 +18,12 @@ describe("Note App rendering ", () => {
 
 describe("Note App functionality ", () => {
   beforeEach(() => {
+    // if we have a note delete it. XXX
+    // add a note ///
+
+    // remove any notes
+
+    // Add a new note
     cy.get("#noteDesc").type("cypress test desc 1");
     cy.get("#noteContent").type("cypress test content 1");
     cy.get("#noteTags").type("tag, 1");
